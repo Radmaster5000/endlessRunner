@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement2 : MonoBehaviour {
 
+
     public Rigidbody rb;
     public float[] xPos;
     int xPosIndex = 1;
     public float speed = 5f;
     public float floorHeight;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +26,9 @@ public class PlayerMovement2 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.RightArrow))
             MoveRight();
 
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(xPos[xPosIndex], floorHeight, transform.position.z), Time.deltaTime * speed) + (transform.forward * speed * Time.fixedDeltaTime);
+        int scoreValue = GameObject.Find("GameManager").GetComponent<GameManager>().score;
+
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(xPos[xPosIndex], floorHeight, transform.position.z), Time.deltaTime * speed) + (transform.forward * (speed + scoreValue) * Time.fixedDeltaTime);
         //Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         //rb.MovePosition(rb.position + forwardMove + transform.position);
 	}
