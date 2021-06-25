@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
 
-	PlayerMovement playerMovement;
+	PlayerMovement2 playerMovement;
 
 	// Use this for initialization
 	void Start () {
-		playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+		playerMovement = GameObject.FindObjectOfType<PlayerMovement2>();
 		
 	}
 

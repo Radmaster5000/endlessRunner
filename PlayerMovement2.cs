@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement2 : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class PlayerMovement2 : MonoBehaviour {
     public float speed = 5f;
     public float floorHeight;
 
+    bool alive = true;
 
 
 	// Use this for initialization
@@ -20,6 +22,10 @@ public class PlayerMovement2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (!alive) {
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             MoveLeft();
@@ -45,5 +51,19 @@ public class PlayerMovement2 : MonoBehaviour {
         xPosIndex++;
         if (xPosIndex > xPos.Length - 1)
             xPosIndex = xPos.Length - 1;
+    }
+
+    public void Die()
+    {
+
+        alive = false;
+        // Restart the game
+        Invoke("Restart", 0.5f);
+    }
+
+    void Restart()
+    {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
