@@ -39,14 +39,14 @@ public class PlayerMovement2 : MonoBehaviour {
         //rb.MovePosition(rb.position + forwardMove + transform.position);
 	}
 
-    void MoveLeft () {
+    public void MoveLeft () {
 
         xPosIndex--;
         if (xPosIndex < 0)
             xPosIndex = 0;
     }
 
-    void MoveRight () {
+    public void MoveRight () {
 
         xPosIndex++;
         if (xPosIndex > xPos.Length - 1)
